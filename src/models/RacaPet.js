@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize')
 
-class Tbracapet extends Model {
+class Tb_racapet extends Model {
     static init(sequelize) {
         super.init({
             nome: DataTypes.STRING(9)
@@ -9,4 +9,4 @@ class Tbracapet extends Model {
     }
 }
 
-module.exports = Tbracapet
+module.exports = Tb_racapet
