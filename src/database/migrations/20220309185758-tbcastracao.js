@@ -25,6 +25,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    return await queryInterface.dropTable('users');
+    return await queryInterface.dropTable('tbcastracao');
   }
 };
