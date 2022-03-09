@@ -1,0 +1,14 @@
+const path = require('path');
+
+module.exports = {
+    config: path.resolve(__dirname, 'src', 'config', 'database.js'),
+    'migrations-path': path.resolve(__dirname, 'src', 'database', 'migrations'),
+  };
+
+/*
+    cada migration realiza a criação de uma tabela
+    uma migration é um historico no banco
+*/
+
+
+
