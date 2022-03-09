@@ -4,7 +4,7 @@ module.exports = {
     async store(req,res) {
         const { nome } = req.body
 
-        const pesoPet = await GeneroPet.create({ nome })
+        const pesoPet = await PesoPet.create({ nome })
 
         return res.json(pesoPet)
     }
