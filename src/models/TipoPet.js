@@ -1,5 +1,9 @@
 const { Model, DataTypes } = require('sequelize')
 
+
+const tipoPet = sequelize.define()
+
+
 class Tbtipopet extends Model {
     static init(sequelize) {
         super.init({
