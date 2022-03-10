@@ -5,7 +5,10 @@ class Tb_castracao extends Model {
         super.init({
             situacao: DataTypes.STRING(3)
         },
-        {sequelize})//conexao com o banco de dados
+        {
+            sequelize,              //conexao com o banco de dados
+            freezeTableName: true   //trava o nome da tabela
+        })
     }
 }
 
