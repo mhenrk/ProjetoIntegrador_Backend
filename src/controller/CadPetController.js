@@ -32,10 +32,30 @@ module.exports = {
         
         } catch (e) {
             res.status(400).json(
-                {errors: e.errors.map((err) => err.message)}
+                {errors: e.errors.map((err) => err.message)
+                }
             )
+        }        
+    },
+
+    //Index
+    async index(req,res){
+        try {
+            const listarPets = await CadPet.findAll()
+            return res.json(listarPets)
+        } catch (error) {
+            return res.json(null)
         }
-        
+    },
+
+    //show
+    async show(req,res){
+        try {
+            const showPet = await CadPet.findByPk(req.params.id)
+            return res.json(showPet)
+        } catch (error) {
+            return res.json(null)
+        }
     }
 }
 

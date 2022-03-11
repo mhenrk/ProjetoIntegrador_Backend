@@ -12,11 +12,31 @@ const CadUSerController = require('../controller/CadUSerController')
 
 //rotas para cadastramento, passando o controller que executa o cadastro
 routes.post('/castracao', CastracaoController.store)
+routes.get('/castracao', CastracaoController.index)
+routes.get('/castracao/:id', CastracaoController.show)
+
 routes.post('/genero', GeneroController.store)
+routes.get('/genero', GeneroController.index)
+routes.get('/genero/:id', GeneroController.show)
+
 routes.post('/peso', PesoController.store)
+routes.get('/peso', PesoController.index)
+routes.get('/peso/:id', PesoController.show)
+
 routes.post('/raca', RacaController.store)
+routes.get('/raca', RacaController.index)
+routes.get('/raca/:id', RacaController.show)
+
 routes.post('/tipo', TipoController.store)
+routes.get('/tipo', TipoController.index)
+routes.get('/tipo/:id', TipoController.show)
+
 routes.post('/cadpet', CadPetController.store)
+routes.get('/cadpet', CadPetController.index)
+routes.get('/cadpet/:id', CadPetController.show)
+
 routes.post('/caduser', CadUSerController.store)
+routes.get('/caduser', CadUSerController.index)
+routes.get('/caduser/:id', CadUSerController.show)
 
 module.exports = routes
