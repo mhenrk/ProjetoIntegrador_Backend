@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize')
-//const bcryptjs = require(bcryptjs)
+const bcryptjs = require("bcryptjs")
 
 class Tb_cadastrausuario extends Model {
     static init(sequelize) {
@@ -52,7 +52,19 @@ class Tb_cadastrausuario extends Model {
                     }
                 }
             },
-            senha: DataTypes.STRING(20),
+            password_hash: {
+                type: DataTypes.STRING,
+                defaultValue: ''
+            },
+            password: {
+                type: DataTypes.VIRTUAL,
+                defaultValue: '',
+                validate: {
+                    notEmpty: {
+                        msg: 'SOU A HASH VIRTUAL'
+                    }
+                }
+            },
             telefone: {
                 type: DataTypes.STRING(11),
                 defaultValue: '',
@@ -75,9 +87,11 @@ class Tb_cadastrausuario extends Model {
             freezeTableName: true   //trava o nome da tabela
         })
 
-        // this.addHook('beforeSave', async (user) => {
-        //     user.password = await bcryptjs.hash(user.passhash, 8)
-        // })
+        this.addHook('beforeSave', async (user) => {
+            if (user.password) {
+              user.password_hash = await bcryptjs.hash(user.password, 8)
+            }
+        })
 
     }
 }

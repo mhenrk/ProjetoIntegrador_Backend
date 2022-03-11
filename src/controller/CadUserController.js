@@ -8,7 +8,7 @@ module.exports = {
             email,
             cpf,
             datanasc,
-            senha,
+            password,
             telefone,
             cep,
             rua,
@@ -27,7 +27,7 @@ module.exports = {
                 email,
                 cpf,
                 datanasc,
-                senha,
+                password,
                 telefone,
                 cep,
                 rua,
@@ -40,6 +40,7 @@ module.exports = {
 
             return res.json(cadUser)
         } catch (e) {
+            console.log(e)
             return res.status(400).json(
                 {
                     errors: e.errors.map((err) => err.message)
@@ -71,12 +72,6 @@ module.exports = {
 
     async update(req, res) {
         try {
-            if (!req.params.id) {
-                return res.status(400).json({
-                    errors: ['Id não enviado']
-                })
-            }
-
             const userID = await CadUser.findByPk(req.params.id)
 
             if (!userID) {

@@ -31,8 +31,8 @@ module.exports = {
         type: Sequelize.STRING(10), //10/02/1995
         allowNull: false
       },
-      senha:{
-        type: Sequelize.STRING(20),
+      password_hash:{
+        type: Sequelize.STRING,
         allowNull: false
       },
       telefone:{
