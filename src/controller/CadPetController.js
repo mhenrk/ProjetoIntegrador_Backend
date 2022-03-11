@@ -14,7 +14,7 @@ module.exports = {
             peso_pet_id
         } = req.body
 
-        try{
+        try {
 
             const cadPet = await CadPet.create({
                 nome_pet,
@@ -27,19 +27,20 @@ module.exports = {
                 pet_castrado_id,
                 peso_pet_id
             })
-        
+
             return res.json(cadPet)
-        
+
         } catch (e) {
             res.status(400).json(
-                {errors: e.errors.map((err) => err.message)
+                {
+                    errors: e.errors.map((err) => err.message)
                 }
             )
-        }        
+        }
     },
 
     //Index
-    async index(req,res){
+    async index(req, res) {
         try {
             const listarPets = await CadPet.findAll()
             return res.json(listarPets)
@@ -49,12 +50,40 @@ module.exports = {
     },
 
     //show
-    async show(req,res){
+    async show(req, res) {
         try {
             const showPet = await CadPet.findByPk(req.params.id)
             return res.json(showPet)
         } catch (error) {
             return res.json(null)
+        }
+    },
+
+    async update(req, res) {
+        try {
+            if (!req.params.id) {
+                res.status(400).json({
+                    errors: ['Id não enviado']
+                })
+            }
+
+            const pet = await CadPet.findByPk(req.params.id)
+
+            if (!pet) {
+                return res.status(400).json({
+                    errors: ['Usuário não encontrado']
+                })
+            }
+
+            const updatedPet = await pet.update(req.body)
+
+            return res.json(updatedPet)
+        } catch (error) {
+            res.status(400).json(
+                {
+                    errors: e.errors.map((err) => err.message)
+                }
+            )
         }
     }
 }

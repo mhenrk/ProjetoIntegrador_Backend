@@ -67,8 +67,35 @@ module.exports = {
         } catch (error) {
             return res.json(null)
         }
-    }
+    },
 
+    async update(req, res) {
+        try {
+            if (!req.params.id) {
+                res.status(400).json({
+                    errors: ['Id não enviado']
+                })
+            }
+
+            const userID = await CadUser.findByPk(req.params.id)
+
+            if (!userID) {
+                return res.status(400).json({
+                    errors: ['Usuário não encontrado']
+                })
+            }
+
+            const updatedUser = await userID.update(req.body)
+
+            return res.json(updatedUser)
+        } catch (error) {
+            res.status(400).json(
+                {
+                    errors: e.errors.map((err) => err.message)
+                }
+            )
+        }
+    }
 
     //Show
     //Update

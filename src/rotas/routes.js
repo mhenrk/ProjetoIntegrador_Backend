@@ -34,9 +34,11 @@ routes.get('/tipo/:id', TipoController.show)
 routes.post('/cadpet', CadPetController.store)
 routes.get('/cadpet', CadPetController.index)
 routes.get('/cadpet/:id', CadPetController.show)
+routes.put('/cadpet/:id', CadPetController.update)
 
 routes.post('/caduser', CadUSerController.store)
 routes.get('/caduser', CadUSerController.index)
 routes.get('/caduser/:id', CadUSerController.show)
+routes.put('/caduser/:id', CadUSerController.update)
 
 module.exports = routes
