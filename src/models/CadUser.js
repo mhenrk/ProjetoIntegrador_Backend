@@ -36,6 +36,9 @@ class Tb_cadastrausuario extends Model {
             cpf: {
                 type: DataTypes.STRING(11),
                 defaultValue: '',
+                unique: {
+                    msg: 'Email já cadastrado'
+                },
                 validate: {
                     notEmpty: {
                         msg: 'Campo Obrigatório'
@@ -55,6 +58,9 @@ class Tb_cadastrausuario extends Model {
             telefone: {
                 type: DataTypes.STRING(11),
                 defaultValue: '',
+                unique: {
+                    msg: 'Email já cadastrado'
+                },
                 validate: {
                     notEmpty: {
                         msg: 'Campo Obrigatório'
