@@ -72,7 +72,7 @@ module.exports = {
     async update(req, res) {
         try {
             if (!req.params.id) {
-                res.status(400).json({
+                return res.status(400).json({
                     errors: ['Id não enviado']
                 })
             }
@@ -88,6 +88,34 @@ module.exports = {
             const updatedUser = await userID.update(req.body)
 
             return res.json(updatedUser)
+        } catch (error) {
+            res.status(400).json(
+                {
+                    errors: e.errors.map((err) => err.message)
+                }
+            )
+        }
+    },
+
+    async delete(req, res) {
+        try {
+            if (!req.params.id) {
+                return res.status(400).json({
+                    errors: ['Id não enviado']
+                })
+            }
+
+            const userID = await CadUser.findByPk(req.params.id)
+
+            if (!userID) {
+                return res.status(400).json({
+                    errors: ['Usuário não encontrado']
+                })
+            }
+
+            await userID.destroy()
+
+            return res.json(userID)
         } catch (error) {
             res.status(400).json(
                 {

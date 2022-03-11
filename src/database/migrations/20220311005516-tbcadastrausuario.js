@@ -41,7 +41,7 @@ module.exports = {
         unique: true
       },
       cep:{
-        type: Sequelize.STRING(10), /*10/10/1900*/
+        type: Sequelize.STRING(10), /*00000000*/
         allowNull: false
       },
       rua:{

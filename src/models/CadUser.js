@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require('sequelize')
+//const bcryptjs = require(bcryptjs)
 
 class Tb_cadastrausuario extends Model {
     static init(sequelize) {
@@ -73,6 +74,11 @@ class Tb_cadastrausuario extends Model {
             sequelize,              //conexao com o banco de dados
             freezeTableName: true   //trava o nome da tabela
         })
+
+        // this.addHook('beforeSave', async (user) => {
+        //     user.password = await bcryptjs.hash(user.passhash, 8)
+        // })
+
     }
 }
 

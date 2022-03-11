@@ -40,5 +40,6 @@ routes.post('/caduser', CadUSerController.store)
 routes.get('/caduser', CadUSerController.index)
 routes.get('/caduser/:id', CadUSerController.show)
 routes.put('/caduser/:id', CadUSerController.update)
+routes.delete('/caduser/:id', CadUSerController.delete)
 
 module.exports = routes
