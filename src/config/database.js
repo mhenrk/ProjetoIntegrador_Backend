@@ -1,11 +1,11 @@
 require('dotenv').config()
 
 module.exports = {
-    dialect: 'mysql',
-    host: 'localhost',
-    username: 'root',
-    password: 'M@rc10H3nr1qu3',
-    database: 'dbpetshop',
+    dialect: process.env.DB_DIALECT,
+    host: process.env.DB_HOST,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     define: {
         timestamp: true,
         underscored: true //pet_shop

@@ -8,6 +8,7 @@ const PesoPet = require('../models/PesoPet')
 const RacaPet = require('../models/RacaPet')
 const TipoPet = require('../models/TipoPet')
 const CadPet = require('../models/CadPet')
+const CadUser = require('../models/CadUser')
 
 const connection = new Sequelize(dbConfig)
 
@@ -18,5 +19,6 @@ PesoPet.init(connection)
 RacaPet.init(connection)
 TipoPet.init(connection)
 CadPet.init(connection)
+CadUser.init(connection)
 
 module.exports = connection
