@@ -3,13 +3,64 @@ const { Model, DataTypes } = require('sequelize')
 class Tb_cadastrausuario extends Model {
     static init(sequelize) {
         super.init({
-            nome: DataTypes.STRING(10),
-            sobrenome: DataTypes.STRING(40),
-            email: DataTypes.STRING(100),
-            cpf: DataTypes.STRING(11),
-            datanasc: DataTypes.STRING(10),
+            nome: {
+                type: DataTypes.STRING(10),
+                defaultValue: '',
+                validate: {
+                    notEmpty: {
+                        msg: 'Campo Obrigatório'
+                    }
+                }
+            },
+            sobrenome: {
+                type: DataTypes.STRING(40),
+                defaultValue: '',
+                validate: {
+                    notEmpty: {
+                        msg: 'Campo Obrigatório'
+                    }
+                }
+            },
+            email: {
+                type: DataTypes.STRING(100),
+                defaultValue: '',
+                unique: {
+                    msg: 'Email já cadastrado'
+                },
+                validate: {
+                    notEmpty: {
+                        msg: 'Campo Obrigatório'
+                    }
+                }
+            },
+            cpf: {
+                type: DataTypes.STRING(11),
+                defaultValue: '',
+                validate: {
+                    notEmpty: {
+                        msg: 'Campo Obrigatório'
+                    }
+                }
+            },
+            datanasc: {
+                type: DataTypes.STRING(10),
+                defaultValue: '',
+                validate: {
+                    notEmpty: {
+                        msg: 'Campo Obrigatório'
+                    }
+                }
+            },
             senha: DataTypes.STRING(20),
-            telefone: DataTypes.STRING(11),
+            telefone: {
+                type: DataTypes.STRING(11),
+                defaultValue: '',
+                validate: {
+                    notEmpty: {
+                        msg: 'Campo Obrigatório'
+                    }
+                }
+            },
             cep: DataTypes.STRING(10),
             rua: DataTypes.STRING(50),
             numero: DataTypes.STRING(5),
@@ -18,10 +69,10 @@ class Tb_cadastrausuario extends Model {
             estado: DataTypes.STRING(2),
             pet_id: DataTypes.INTEGER
         },
-        {
-            sequelize,              //conexao com o banco de dados
-            freezeTableName: true   //trava o nome da tabela
-        })
+            {
+                sequelize,              //conexao com o banco de dados
+                freezeTableName: true   //trava o nome da tabela
+            })
     }
 }
 
