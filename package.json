@@ -1,14 +1,26 @@
 {
   "name": "petshopintegrador",
   "version": "1.0.0",
-  "description": "",
+  "description": "API Rest - Projeto Integrador conclusão de curso Digital House - Fullstack NodeJS",
   "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/server.js"
   },
   "keywords": [],
-  "author": ["Marcio H", "Victor", "Guilherme N."],
+  "author": "Marcio H",
+  "contributors": [
+    {
+      "nome": "Victor",
+      "email": "nome@nome.com",
+      "portifolio": "htts://google.com"
+    },
+    {
+      "nome": "Guilherme",
+      "email": "nome@nome.com",
+      "portifolio": "htts://google.com"
+    }
+  ],
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
