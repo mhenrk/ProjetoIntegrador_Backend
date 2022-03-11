@@ -3,15 +3,81 @@ const { Model, DataTypes } = require('sequelize')
 class Tb_cadastrapet extends Model {
     static init(sequelize) {
         super.init({
-            nome_pet: DataTypes.STRING(20),
-            apelido_pet: DataTypes.STRING(20),
-            raca_pet_id: DataTypes.INTEGER,
-            tipo_pet_id: DataTypes.INTEGER,
-            datanasc_pet: DataTypes.STRING(10),
-            idade_pet: DataTypes.INTEGER,
-            genero_pet_id: DataTypes.INTEGER,
-            pet_castrado_id: DataTypes.INTEGER,
-            peso_pet_id: DataTypes.INTEGER
+            nome_pet: {
+                type: DataTypes.STRING(20),
+                defaultValue: '',
+                validate: {
+                    notEmpty: {
+                        msg: 'Campo Obrigatório'
+                    }
+                }
+            },
+            apelido_pet: {
+                type: DataTypes.STRING(20),
+            },
+            raca_pet_id: {
+                type: DataTypes.INTEGER,
+                defaultValue: '',
+                validate: {
+                    notEmpty: {
+                        msg: 'Campo Obrigatório'
+                    }
+                }
+            },
+            tipo_pet_id: {
+                type: DataTypes.INTEGER,
+                defaultValue: '',
+                validate: {
+                    notEmpty: {
+                        msg: 'Campo Obrigatório'
+                    }
+                }
+            },
+            datanasc_pet: {
+                type: DataTypes.STRING(10),
+                defaultValue: '',
+                validate: {
+                    notEmpty: {
+                        msg: 'Informe uma data válida'
+                    }
+                }
+            },
+            idade_pet: {
+                type: DataTypes.INTEGER,
+                defaultValue: '',
+                validate: {
+                    notEmpty: {
+                        msg: 'Campo Obrigatório'
+                    }
+                }
+            },
+            genero_pet_id: {
+                type: DataTypes.INTEGER,
+                defaultValue: '',
+                validate: {
+                    notEmpty: {
+                        msg: 'Campo Obrigatório'
+                    }
+                }
+            },
+            pet_castrado_id: {
+                type: DataTypes.INTEGER,
+                defaultValue: '',
+                validate: {
+                    notEmpty: {
+                        msg: 'Campo Obrigatório'
+                    }
+                }
+            },
+            peso_pet_id: {
+                type: DataTypes.INTEGER,
+                defaultValue: '',
+                validate: {
+                    notEmpty: {
+                        msg: 'Campo Obrigatório'
+                    }
+                }
+            },
         },
         {
             sequelize,              //conexao com o banco de dados

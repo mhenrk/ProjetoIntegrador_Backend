@@ -69,10 +69,10 @@ class Tb_cadastrausuario extends Model {
             estado: DataTypes.STRING(2),
             pet_id: DataTypes.INTEGER
         },
-            {
-                sequelize,              //conexao com o banco de dados
-                freezeTableName: true   //trava o nome da tabela
-            })
+        {
+            sequelize,              //conexao com o banco de dados
+            freezeTableName: true   //trava o nome da tabela
+        })
     }
 }
 

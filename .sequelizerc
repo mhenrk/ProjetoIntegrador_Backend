@@ -3,8 +3,10 @@ const path = require('path');
 module.exports = {
     //alterando a pasta e o arquivo de configuração do banco
     config: path.resolve(__dirname, 'src', 'config', 'database.js'),
+    'models-path': path.resolve(__dirname, 'src', 'models'),
     //criação da variavel de migrations e apontamento para a pasta
     'migrations-path': path.resolve(__dirname, 'src', 'database', 'migrations'),
+    'seeders-path': path.resolve(__dirname, 'src', 'database', 'seeds')
   };
 
 /*

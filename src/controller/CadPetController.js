@@ -14,18 +14,28 @@ module.exports = {
             peso_pet_id
         } = req.body
 
-        const cadPet = await CadPet.create({
-            nome_pet,
-            apelido_pet,
-            raca_pet_id,
-            tipo_pet_id,
-            datanasc_pet,
-            idade_pet,
-            genero_pet_id,
-            pet_castrado_id,
-            peso_pet_id
-        })
+        try{
 
-        return res.json(cadPet)
+            const cadPet = await CadPet.create({
+                nome_pet,
+                apelido_pet,
+                raca_pet_id,
+                tipo_pet_id,
+                datanasc_pet,
+                idade_pet,
+                genero_pet_id,
+                pet_castrado_id,
+                peso_pet_id
+            })
+        
+            return res.json(cadPet)
+        
+        } catch (e) {
+            res.status(400).json(
+                {errors: e.errors.map((err) => err.message)}
+            )
+        }
+        
     }
 }
+

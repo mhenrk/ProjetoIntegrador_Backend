@@ -37,7 +37,7 @@ module.exports = {
                 estado,
                 pet_id
             })
-    
+
             return res.json(cadUser)
         } catch (e) {
             res.status(400).json(
@@ -49,3 +49,4 @@ module.exports = {
         }
     }
 }
+
