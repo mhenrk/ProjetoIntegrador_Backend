@@ -35,6 +35,7 @@ routes.post('/cadpet', CadPetController.store)
 routes.get('/cadpet', CadPetController.index)
 routes.get('/cadpet/:id', CadPetController.show)
 routes.put('/cadpet/:id', CadPetController.update)
+routes.delete('/cadpet/:id', CadPetController.delete)
 
 routes.post('/caduser', CadUSerController.store)
 routes.get('/caduser', CadUSerController.index)

@@ -85,6 +85,34 @@ module.exports = {
                 }
             )
         }
+    },
+
+    async delete(req, res) {
+        try {
+            if (!req.params.id) {
+                return res.status(400).json({
+                    errors: ['Id não enviado']
+                })
+            }
+
+            const pet = await CadPet.findByPk(req.params.id)
+
+            if (!pet) {
+                return res.status(400).json({
+                    errors: ['Pet não Cadastrado']
+                })
+            }
+
+            await pet.destroy()
+
+            return res.json(pet)
+        } catch (error) {
+            res.status(400).json(
+                {
+                    errors: e.errors.map((err) => err.message)
+                }
+            )
+        }
     }
 }
 
