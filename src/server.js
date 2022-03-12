@@ -1,5 +1,5 @@
 const express = require('express')
-const routes = require('./rotas/routes')
+const routes = require('./routes/indexRoutes')
 
 //chamando o arquivo index da base de dados
 require('./database')
