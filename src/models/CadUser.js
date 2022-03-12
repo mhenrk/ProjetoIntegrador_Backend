@@ -92,7 +92,11 @@ class Tb_cadastrausuario extends Model {
               user.password_hash = await bcryptjs.hash(user.password, 8)
             }
         })
+    }
 
+    //o propio model do usuário faz a validação da hash da senha do usuario
+    passwordValidado(password){
+        return bcryptjs.compare(password, this.password_hash)
     }
 }
 

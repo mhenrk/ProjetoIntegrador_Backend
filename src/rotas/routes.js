@@ -9,6 +9,7 @@ const RacaController = require('../controller/RacaController')
 const TipoController = require('../controller/TipoController')
 const CadPetController = require('../controller/CadPetController')
 const CadUSerController = require('../controller/CadUSerController')
+const TokenController = require('../controller/TokenController')
 
 //rotas para cadastramento, passando o controller que executa o cadastro
 routes.post('/castracao', CastracaoController.store)
@@ -43,4 +44,5 @@ routes.get('/caduser/:id', CadUSerController.show)
 routes.put('/caduser/:id', CadUSerController.update)
 routes.delete('/caduser/:id', CadUSerController.delete)
 
+routes.post('/token', TokenController.store)
 module.exports = routes
