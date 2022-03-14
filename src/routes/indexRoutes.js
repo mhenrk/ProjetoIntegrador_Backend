@@ -35,19 +35,32 @@ routes.post('/tipo', TipoController.store)
 routes.get('/tipo', TipoController.index)
 routes.get('/tipo/:id', TipoController.show)
 
+//###############################################################
+routes.get('/cadpet', CadPetController.index)       //CRUD APENAS
+routes.get('/cadpet/:id', CadPetController.show)    //CRUD APENAS
+
 routes.post('/cadpet', CadPetController.store)
-routes.get('/cadpet', CadPetController.index)
-routes.get('/cadpet/:id', CadPetController.show)
 routes.put('/cadpet/:id', CadPetController.update)
 routes.delete('/cadpet/:id', CadPetController.delete)
 
+//###############################################################
 //metodo de validação de login do usuário: "loginValidation.requestLogin"
 //sempre que for ser feito o bloqueio a algum recurso por usuario logado deverá ser usado o metodo acima
+routes.get('/caduser', CadUSerController.index)     //CRUD APENAS
+routes.get('/caduser/:id', CadUSerController.show)  //CRUD APENAS
+
 routes.post('/caduser', CadUSerController.store)
-routes.get('/caduser', loginValidation.requestLogin, CadUSerController.index)
-routes.get('/caduser/:id', loginValidation.requestLogin, CadUSerController.show)
-routes.put('/caduser/:id', CadUSerController.update)
-routes.delete('/caduser/:id', CadUSerController.delete)
+routes.put('/caduser/', loginValidation.requestLogin, CadUSerController.update)
+routes.delete('/caduser/', loginValidation.requestLogin, CadUSerController.delete)
+
+/**
+ * CRIAÇÃO DE USUÁRIO - FINALIZADO
+ * GERAÇÃO DO TOKEN E CONTROLE DE LOGIN - FINALIZADO
+ * CONTROLE DE ALTERAÇÃO DE DADOS - FINALIZADO
+ * OBS: USUARIO PODE TROCAR "QUALQUER" INFORMAÇÃO DESDE QUE NÃO MUDE O EMAIL
+ *      SE O USUARIO TROCAR O EMAIL É PRECISO UM NOVO TOKEN (LOGIN) PARA VALIDAÇÃO DO ACESSO 
+ * 
+ */
 
 routes.post('/token', TokenController.store)
 module.exports = routes

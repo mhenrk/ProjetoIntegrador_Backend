@@ -38,7 +38,7 @@ module.exports = {
                 //pet_id
             })
 
-            return res.json(cadUser)
+            return res.json({nome, sobrenome, email, telefone, password})
         } catch (e) {
             console.log(e)
             return res.status(400).json(
@@ -51,9 +51,9 @@ module.exports = {
     },
 
     //Index
-    async index(req, res){
+    async index(req, res) {
         try {
-            const usuarios = await CadUser.findAll()
+            const usuarios = await CadUser.findAll({ attributes: ['id', 'nome', 'email', 'telefone'] })
             return res.json(usuarios)
         } catch (error) {
             return res.json(null)
@@ -61,10 +61,13 @@ module.exports = {
     },
 
     //show
-    async show(req,res){
+    async show(req, res) {
         try {
             const showUser = await CadUser.findByPk(req.params.id)
-            return res.json(showUser)
+
+            const { id, nome, email, telefone } = showUser
+
+            return res.json({ id, nome, email, telefone })
         } catch (error) {
             return res.json(null)
         }
@@ -72,7 +75,7 @@ module.exports = {
 
     async update(req, res) {
         try {
-            const userID = await CadUser.findByPk(req.params.id)
+            const userID = await CadUser.findByPk(req.id)
 
             if (!userID) {
                 return res.status(400).json({
@@ -94,13 +97,7 @@ module.exports = {
 
     async delete(req, res) {
         try {
-            if (!req.params.id) {
-                return res.status(400).json({
-                    errors: ['Id não enviado']
-                })
-            }
-
-            const userID = await CadUser.findByPk(req.params.id)
+            const userID = await CadUser.findByPk(req.id)
 
             if (!userID) {
                 return res.status(400).json({
