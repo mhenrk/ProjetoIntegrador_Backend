@@ -1,6 +1,9 @@
 const express = require('express')
 const routes = express.Router()
 
+//importando trava de login - middleware
+const loginValidation = require('../middleware/loginValidation')
+
 //importando controllers da aplicacao
 const CastracaoController = require('../controller/CastracaoController')
 const GeneroController = require('../controller/GeneroController')
@@ -39,8 +42,8 @@ routes.put('/cadpet/:id', CadPetController.update)
 routes.delete('/cadpet/:id', CadPetController.delete)
 
 routes.post('/caduser', CadUSerController.store)
-routes.get('/caduser', CadUSerController.index)
-routes.get('/caduser/:id', CadUSerController.show)
+routes.get('/caduser', loginValidation.requestLogin, CadUSerController.index)
+routes.get('/caduser/:id', loginValidation.requestLogin, CadUSerController.show)
 routes.put('/caduser/:id', CadUSerController.update)
 routes.delete('/caduser/:id', CadUSerController.delete)
 

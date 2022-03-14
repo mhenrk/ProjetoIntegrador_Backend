@@ -44,7 +44,7 @@ module.exports = {
                  * portanto tentar converter o tempo de expiração 
                  * do token para segundos no arquivo .env
                  * ou nos seguintes modelos: 7d | 2 days | 10h
-                 */
+                */
 
             })
 
