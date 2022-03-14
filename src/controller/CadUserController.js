@@ -15,8 +15,8 @@ module.exports = {
             numero,
             bairro,
             cidade,
-            estado,
-            pet_id
+            estado
+            //pet_id
         } = req.body
 
         try {
@@ -34,8 +34,8 @@ module.exports = {
                 numero,
                 bairro,
                 cidade,
-                estado,
-                pet_id
+                estado
+                //pet_id
             })
 
             return res.json(cadUser)
@@ -119,10 +119,5 @@ module.exports = {
             )
         }
     }
-
-    //Show
-    //Update
-    //Delete
-    
 }
 

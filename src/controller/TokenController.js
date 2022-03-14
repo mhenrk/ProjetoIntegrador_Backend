@@ -29,6 +29,7 @@ module.exports = {
 
             //Encontrou o usuário, mas a senha está incorreta
             //metodo passwordValidado(password) é validado atraves do Model do Cadastro do usuário
+            //o objeto do usuário já é retornado atraves do CadUser.findOne()
             if (!(await user.passwordValidado(password))) {
                 return res.status(401).json({
                     errors: ['Senha Inválida']
@@ -36,6 +37,7 @@ module.exports = {
             }
 
             //Se digitado Email/Senha corretamente é gerado o token
+            //o objeto do usuário já é retornado atraves do CadUser.findOne()
             const { id } = user
             const token = jwt.sign({ id, email }, process.env.TOKEN_SECRET, {
                 expiresIn: process.env.TOKEN_EXPIRATION

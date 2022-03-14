@@ -79,8 +79,8 @@ class Tb_cadastrausuario extends Model {
             numero: DataTypes.STRING(5),
             bairro: DataTypes.STRING(30),
             cidade: DataTypes.STRING(30),
-            estado: DataTypes.STRING(2),
-            pet_id: DataTypes.INTEGER
+            estado: DataTypes.STRING(2)
+            //pet_id: DataTypes.INTEGER
         },
         {
             sequelize,              //conexao com o banco de dados

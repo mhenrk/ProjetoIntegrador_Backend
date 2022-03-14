@@ -41,6 +41,8 @@ routes.get('/cadpet/:id', CadPetController.show)
 routes.put('/cadpet/:id', CadPetController.update)
 routes.delete('/cadpet/:id', CadPetController.delete)
 
+//metodo de validação de login do usuário: "loginValidation.requestLogin"
+//sempre que for ser feito o bloqueio a algum recurso por usuario logado deverá ser usado o metodo acima
 routes.post('/caduser', CadUSerController.store)
 routes.get('/caduser', loginValidation.requestLogin, CadUSerController.index)
 routes.get('/caduser/:id', loginValidation.requestLogin, CadUSerController.show)
