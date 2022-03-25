@@ -19,6 +19,11 @@ require('dotenv').config()
 //rotas da aplicação - remover se estiver tudo ok
 app.use(express.json())
 
+//tratamento de requisições de formulários - body
+//realiza o tratamento de requisições passadas pelo body
+//isso evita que o body recebido por formulário venha undefined
+app.use(express.urlencoded({extended: true}))
+
 //app.use('/', homeRoutes)
 app.use('/petshop/castracao-pet/', castracaoRoutes)
 app.use('/petshop/raca-pet/', racaPetRoutes)

@@ -9,7 +9,7 @@ module.exports = {
       {
         nome: 'Marcio',
         sobrenome: 'H.',
-        email: 'marcio.h@gmail.com',  //unique
+        email: 'marcio.h@dhpetshop.com',  //unique
         cpf: '12345678900',           //unique
         datanasc: '12/04/1986',       //01/01/1901
         password_hash: await bcryptojs.hash('123456789', 8),
@@ -26,7 +26,7 @@ module.exports = {
       {
         nome: 'Victor',
         sobrenome: 'C.',
-        email: 'victor.c@gmail.com',  //unique
+        email: 'victor.c@dhpetshop.com',  //unique
         cpf: '12345678901',           //unique
         datanasc: '29/12/1992',       //01/01/1901
         password_hash: await bcryptojs.hash('123456789', 8),
@@ -43,7 +43,7 @@ module.exports = {
       {
         nome: 'Guilherme',
         sobrenome: 'N.',
-        email: 'guilherme.c@gmail.com',  //unique
+        email: 'guilherme.c@dhpetshop.com',  //unique
         cpf: '12345678902',              //unique
         datanasc: '09/07/1970',          //01/01/1901
         password_hash: await bcryptojs.hash('123456789', 8),
