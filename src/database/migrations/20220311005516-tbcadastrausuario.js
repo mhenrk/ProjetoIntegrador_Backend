@@ -36,12 +36,12 @@ module.exports = {
         allowNull: false
       },
       telefone:{
-        type: Sequelize.STRING(11),
+        type: Sequelize.STRING(11), /*11999998888 */
         allowNull: false,
         unique: true
       },
       cep:{
-        type: Sequelize.STRING(10), /*00000000*/
+        type: Sequelize.STRING(9), /*15015-000*/
         allowNull: false
       },
       rua:{
