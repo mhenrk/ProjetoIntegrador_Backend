@@ -53,7 +53,7 @@ module.exports = {
             //retorno do objeto chave:valor com o token - momentaneo
             return res.json({ token })
         } catch (error) {
-            return res.json("Ocorreu um erro, eu sou o ERRO: " + error.message)
+            return res.json("Ocorreu um erro: " + error.message)
         }
     }
 
