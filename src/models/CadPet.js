@@ -84,6 +84,10 @@ class Tb_cadastrapet extends Model {
             freezeTableName: true   //trava o nome da tabela
         })
     }
+
+    static associate(models){
+        this.hasMany(models.Tb_cadastrausuario, {foreignKey: 'usuarioId'})
+    }
 }
 
 module.exports = Tb_cadastrapet
