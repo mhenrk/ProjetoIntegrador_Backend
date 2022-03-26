@@ -65,16 +65,6 @@ module.exports = {
           key: 'id'
         }
       },
-      usuario_id:{
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'tb_cadastrausuario',
-          key: 'id',
-        },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
-      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false

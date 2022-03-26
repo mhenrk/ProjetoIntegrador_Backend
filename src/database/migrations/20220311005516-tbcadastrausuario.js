@@ -8,15 +8,7 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
-      },
-      // fotoPerfil:{
-      //   type: Sequelize.STRING,
-      //   allowNull: false
-      // },
-      // isAdmin:{
-      //   type: Sequelize.BOOLEAN,
-      //   allowNull: false
-      // },      
+      },  
       nome:{
         type: Sequelize.STRING(10),
         allowNull: false

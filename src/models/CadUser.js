@@ -4,13 +4,6 @@ const bcryptjs = require("bcryptjs")
 class Tb_cadastrausuario extends Model {
     static init(sequelize) {
         super.init({
-            // fotoPerfil: {
-            //     type: DataTypes.STRING,
-            // },
-            // isAdmin: {
-            //     type: DataTypes.BOOLEAN,
-            //     defaultValue: 0,
-            // },
             nome: {
                 type: DataTypes.STRING(10),
                 defaultValue: '',
@@ -86,8 +79,8 @@ class Tb_cadastrausuario extends Model {
             numero: DataTypes.STRING(5),
             bairro: DataTypes.STRING(30),
             cidade: DataTypes.STRING(30),
-            estado: DataTypes.STRING(2)
-            //pet_id: DataTypes.INTEGER
+            estado: DataTypes.STRING(2),
+            pet_id: DataTypes.INTEGER
         },
         {
             sequelize,              //conexao com o banco de dados
@@ -104,12 +97,6 @@ class Tb_cadastrausuario extends Model {
     //o propio model do usuário faz a validação da hash da senha do usuario
     passwordValidado(password){
         return bcryptjs.compare(password, this.password_hash)
-    }
-
-    static associate(models){
-        this.hasMany(models.CadPet, {
-            foreignKey: 'usuario_id'
-        })
     }
 }
 
