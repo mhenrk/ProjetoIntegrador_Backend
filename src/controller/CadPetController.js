@@ -11,7 +11,8 @@ module.exports = {
             idade_pet,
             genero_pet_id,
             pet_castrado_id,
-            peso_pet_id
+            peso_pet_id,
+            usuarioId
         } = req.body
 
         try {
@@ -25,7 +26,8 @@ module.exports = {
                 idade_pet,
                 genero_pet_id,
                 pet_castrado_id,
-                peso_pet_id
+                peso_pet_id,
+                usuarioId
             })
 
             return res.json(cadPet)

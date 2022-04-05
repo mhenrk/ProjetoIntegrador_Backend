@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
-      },
+      },  
       nome:{
         type: Sequelize.STRING(10),
         allowNull: false
@@ -64,14 +64,6 @@ module.exports = {
         type: Sequelize.STRING(2), /*AC DF SP RJ*/
         allowNull: false
       },
-      // pet_id:{
-      //   type: Sequelize.INTEGER,
-      //   allowNull: false,
-      //   references: {
-      //     model: 'tb_cadastrapet',
-      //     key: 'id'
-      //   }
-      // },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false

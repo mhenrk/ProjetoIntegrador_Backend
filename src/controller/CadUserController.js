@@ -16,7 +16,6 @@ module.exports = {
             bairro,
             cidade,
             estado
-            //pet_id
         } = req.body
 
         try {
@@ -35,9 +34,7 @@ module.exports = {
                 bairro,
                 cidade,
                 estado
-                //pet_id
             })
-
             return res.json({nome, sobrenome, email, telefone, password})
         } catch (e) {
             console.log(e)
@@ -53,10 +50,11 @@ module.exports = {
     //Index
     async index(req, res) {
         try {
-            const usuarios = await CadUser.findAll({ attributes: ['id', 'nome', 'email', 'telefone'] })
+            const usuarios = await CadUser.findAll()
+            //{ attributes: ['id', 'nome', 'email', 'telefone'] }
             return res.json(usuarios)
         } catch (error) {
-            return res.json(null)
+            return res.json(error)
         }
     },
 

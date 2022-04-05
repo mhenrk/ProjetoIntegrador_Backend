@@ -10,7 +10,7 @@ module.exports = {
         updated_at: new Date()
       },
       {
-        nome: 'PITBULL',
+        nome: 'YORKSHIRE',
         created_at: new Date(),
         updated_at: new Date()
       },

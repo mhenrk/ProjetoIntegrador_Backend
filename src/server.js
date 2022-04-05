@@ -9,6 +9,7 @@ const generoPetRoutes = require('./routes/generoPetRoutes')
 const cadastraPetRoutes = require('./routes/cadastraPetRoutes')
 const cadastraUserRoutes = require('./routes/cadastraUserRoutes')
 const tokenRoutes = require('./routes/tokenRoutes')
+const fotoRoutes = require('./routes/fotoRoutes')
 
 //chamando o arquivo index da base de dados
 require('./database')
@@ -33,6 +34,7 @@ app.use('/petshop/peso-pet/', pesoPetRoutes)
 app.use('/petshop/cadastra-pet/', cadastraPetRoutes)
 app.use('/petshop/cadastra-user/', cadastraUserRoutes)
 app.use('/petshop/token/', tokenRoutes)
+app.use('/petshop/foto/', fotoRoutes)
 
 
 app.listen(process.env.PORT, () => {

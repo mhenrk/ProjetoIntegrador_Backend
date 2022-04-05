@@ -80,7 +80,6 @@ class Tb_cadastrausuario extends Model {
             bairro: DataTypes.STRING(30),
             cidade: DataTypes.STRING(30),
             estado: DataTypes.STRING(2)
-            //pet_id: DataTypes.INTEGER
         },
         {
             sequelize,              //conexao com o banco de dados
@@ -92,12 +91,18 @@ class Tb_cadastrausuario extends Model {
               user.password_hash = await bcryptjs.hash(user.password, 8)
             }
         })
+
     }
 
     //o propio model do usuário faz a validação da hash da senha do usuario
     passwordValidado(password){
         return bcryptjs.compare(password, this.password_hash)
     }
+
+    static associate(models){
+        this.hasMany(models.Tb_cadastrapet, {foreignKey: 'usuarioId'})
+    }
+    
 }
 
 module.exports = Tb_cadastrausuario
