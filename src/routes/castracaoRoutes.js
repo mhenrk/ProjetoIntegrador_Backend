@@ -8,5 +8,7 @@ const loginValidation = require('../middleware/loginValidation')
 routes.get('/', castracaoPetController.index)
 routes.get('/:id', castracaoPetController.show)
 routes.post('/', castracaoPetController.store)
+routes.put('/', castracaoPetController.update)
+routes.delete('/', castracaoPetController.delete)
 
 module.exports = routes

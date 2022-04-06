@@ -1,5 +1,6 @@
-const CadUser = require("../models/CadUser")
-const jwt = require('jsonwebtoken')
+const db = require("../models")
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcryptjs")
 
 module.exports = {
 
@@ -15,8 +16,7 @@ module.exports = {
                 })
             }
 
-            //Enviou Email/Senha, eu procuro o usuário na tabela pelo campo login, estruturado conforme o model
-            const user = await CadUser.findOne({
+            const user = await db.Usuario.findOne({
                 where: { email }
             })
 
@@ -27,10 +27,12 @@ module.exports = {
                 })
             }
 
+            const validaPassword = bcrypt.compareSync(password, user.password)
+
             //Encontrou o usuário, mas a senha está incorreta
             //metodo passwordValidado(password) é validado atraves do Model do Cadastro do usuário
             //o objeto do usuário já é retornado atraves do CadUser.findOne()
-            if (!(await user.passwordValidado(password))) {
+            if (!validaPassword) {
                 return res.status(401).json({
                     errors: ['Senha Inválida']
                 })
@@ -52,9 +54,16 @@ module.exports = {
 
             //retorno do objeto chave:valor com o token - momentaneo
             return res.json({ token })
-        } catch (error) {
-            return res.json("Ocorreu um erro: " + error.message)
+        } catch (e) {
+            return res.json("Ocorreu um erro: " + e.message)
         }
     }
 
 }
+
+/**
+* TOKEN_EXPIRATION possui um padrão em segundos,
+* portanto tentar converter o tempo de expiração 
+* do token para segundos no arquivo .env
+* ou nos seguintes modelos: 7d | 2 days | 10h
+*/

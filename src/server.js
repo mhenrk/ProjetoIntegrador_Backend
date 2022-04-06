@@ -1,18 +1,18 @@
 const express = require('express')
 const app = express()
 
-const castracaoRoutes = require('./routes/castracaoRoutes')
-const pesoPetRoutes = require('./routes/pesoPetRoutes')
-const racaPetRoutes = require('./routes/racaPetRoutes')
-const tipoPetRoutes = require('./routes/tipoPetRoutes')
-const generoPetRoutes = require('./routes/generoPetRoutes')
-const cadastraPetRoutes = require('./routes/cadastraPetRoutes')
-const cadastraUserRoutes = require('./routes/cadastraUserRoutes')
-const tokenRoutes = require('./routes/tokenRoutes')
-const fotoRoutes = require('./routes/fotoRoutes')
+const castracaoRoutes = require('../src/routes/castracaoRoutes')
+const pesoPetRoutes = require('../src/routes/pesoPetRoutes')
+const racaPetRoutes = require('../src/routes/racaPetRoutes')
+const tipoPetRoutes = require('../src/routes/tipoPetRoutes')
+const generoPetRoutes = require('../src/routes/generoPetRoutes')
+const cadastraPetRoutes = require('../src/routes/cadastraPetRoutes')
+const cadastraUserRoutes = require('../src/routes/cadastraUserRoutes')
+const tokenRoutes = require('../src/routes/tokenRoutes')
+const fotoRoutes = require('../src/routes/fotoRoutes')
+const servicosRoutes = require('../src/routes/servicosRoutes')
 
-//chamando o arquivo index da base de dados
-require('./database')
+// //chamando o arquivo index da base de dados
 
 //Chamando arquivo de configuração global
 require('dotenv').config()
@@ -35,7 +35,7 @@ app.use('/petshop/cadastra-pet/', cadastraPetRoutes)
 app.use('/petshop/cadastra-user/', cadastraUserRoutes)
 app.use('/petshop/token/', tokenRoutes)
 app.use('/petshop/foto/', fotoRoutes)
-
+app.use('/petshop/servicos/', servicosRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server Rodando em https://localhost:${process.env.PORT}`)
