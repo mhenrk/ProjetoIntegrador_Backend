@@ -1,4 +1,4 @@
-const CadPet = require("../models/CadPet")
+const db = require('../models')
 
 module.exports = {
     async store(req, res) {
@@ -12,12 +12,12 @@ module.exports = {
             genero_pet_id,
             pet_castrado_id,
             peso_pet_id,
-            usuarioId
+            usuario_id
         } = req.body
 
         try {
 
-            const cadPet = await CadPet.create({
+            const cadPet = await db.Pet.create({
                 nome_pet,
                 apelido_pet,
                 raca_pet_id,
@@ -27,7 +27,7 @@ module.exports = {
                 genero_pet_id,
                 pet_castrado_id,
                 peso_pet_id,
-                usuarioId
+                usuario_id
             })
 
             return res.json(cadPet)
@@ -44,17 +44,100 @@ module.exports = {
     //Index
     async index(req, res) {
         try {
-            const listarPets = await CadPet.findAll()
-            return res.json(listarPets)
+            const listarPets = await db.Pet.findAll({
+                include: [
+                    {
+                        model: db.Tipo,
+                        as: 'tipo',
+                        attributes: {
+                            exclude: ['id', 'createdAt', 'updatedAt']
+                        }
+                    },
+                    {
+                        model: db.Raca,
+                        as: 'raca',
+                        attributes: {
+                            exclude: ['id', 'createdAt', 'updatedAt']
+                        }
+                    },
+                    {
+                        model: db.Peso,
+                        as: 'peso',
+                        attributes: {
+                            exclude: ['id', 'createdAt', 'updatedAt']
+                        }
+                    },
+                    {
+                        model: db.Genero,
+                        as: 'genero',
+                        attributes: {
+                            exclude: ['id', 'createdAt', 'updatedAt']
+                        }
+                    },
+                    {
+                        model: db.Castracao,
+                        as: 'castracao',
+                        attributes: {
+                            exclude: ['id', 'createdAt', 'updatedAt']
+                        }
+                    }
+                ],
+                attributes: {
+                    exclude: ['raca_pet_id', 'tipo_pet_id', 'genero_pet_id', 'pet_castrado_id', 'peso_pet_id', 'usuario_id', 'createdAt', 'updatedAt']
+                }
+            })
+            return res.status(200).json(listarPets)
         } catch (error) {
-            return res.json(null)
+            console.log(error)
+            return res.status(404).json(error)
         }
     },
 
     //show
     async show(req, res) {
         try {
-            const showPet = await CadPet.findByPk(req.params.id)
+            const showPet = await db.Pet.findByPk(req.params.id, {
+                include: [
+                    {
+                        model: db.Tipo,
+                        as: 'tipo',
+                        attributes: {
+                            exclude: ['id', 'createdAt', 'updatedAt']
+                        }
+                    },
+                    {
+                        model: db.Raca,
+                        as: 'raca',
+                        attributes: {
+                            exclude: ['id', 'createdAt', 'updatedAt']
+                        }
+                    },
+                    {
+                        model: db.Peso,
+                        as: 'peso',
+                        attributes: {
+                            exclude: ['id', 'createdAt', 'updatedAt']
+                        }
+                    },
+                    {
+                        model: db.Genero,
+                        as: 'genero',
+                        attributes: {
+                            exclude: ['id', 'createdAt', 'updatedAt']
+                        }
+                    },
+                    {
+                        model: db.Castracao,
+                        as: 'castracao',
+                        attributes: {
+                            exclude: ['id', 'createdAt', 'updatedAt']
+                        }
+                    }
+                ],
+                attributes: {
+                    exclude: ['raca_pet_id', 'tipo_pet_id', 'genero_pet_id', 'pet_castrado_id', 'peso_pet_id', 'usuario_id', 'createdAt', 'updatedAt']
+                }
+            })
             return res.json(showPet)
         } catch (error) {
             return res.json(null)
@@ -69,7 +152,7 @@ module.exports = {
                 })
             }
 
-            const pet = await CadPet.findByPk(req.params.id)
+            const pet = await db.Pet.findByPk(req.params.id)
 
             if (!pet) {
                 return res.status(400).json({
@@ -97,7 +180,7 @@ module.exports = {
                 })
             }
 
-            const pet = await CadPet.findByPk(req.params.id)
+            const pet = await db.Pet.findByPk(req.params.id)
 
             if (!pet) {
                 return res.status(400).json({

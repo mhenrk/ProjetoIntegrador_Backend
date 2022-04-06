@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const CadUser = require('../models/CadUser')
+const db = require('../models')
 
 module.exports = {
 
@@ -36,7 +36,7 @@ module.exports = {
             const { id, email } = dados
 
             //pesquiso na base de dados se existe esse usuario com id/email
-            const user = await CadUser.findOne({
+            const user = await db.Usuario.findOne({
                 where: {
                   id,
                   email,

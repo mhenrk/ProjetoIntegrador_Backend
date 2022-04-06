@@ -8,5 +8,7 @@ const loginValidation = require('../middleware/loginValidation')
 routes.get('/', racaPetController.index)
 routes.get('/:id', racaPetController.show)
 routes.post('/', racaPetController.store)
+routes.put('/', racaPetController.update)
+routes.delete('/', racaPetController.delete)
 
 module.exports = routes
