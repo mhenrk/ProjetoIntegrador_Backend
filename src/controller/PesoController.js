@@ -43,15 +43,15 @@ module.exports = {
                 })
             }
 
-            const pesoPk = await db.Peso.findByPk(req.params.id)
+            const idPeso = await db.Peso.findByPk(req.params.id)
 
-            if (!pesoPk) {
+            if (!idPeso) {
                 return res.status(400).json({
-                    errors: ['Peso não encontrado']
+                    errors: ['Registro não encontrado']
                 })
             }
 
-            const pesoUpdate = await pesoPk.update(req.body)
+            const pesoUpdate = await idPeso.update(req.body)
 
             return res.json(pesoUpdate)
         } catch (error) {
@@ -71,20 +71,20 @@ module.exports = {
                 })
             }
 
-            const pesoPk = await db.Peso.findByPk(req.params.id)
+            const idPeso = await db.Peso.findByPk(req.params.id)
 
-            if (!pesoPk) {
+            if (!idPeso) {
                 return res.status(400).json({
-                    errors: ['Peso não cadastrado ou não encontrado']
+                    errors: ['Registro não encontrado']
                 })
             }
 
-            await pesoPk.destroy()
+            await idPeso.destroy()
 
-            return res.json(pesoPk)
+            return res.json(idPeso)
         } catch (error) {
-            res.status(400).json({
-                    errors: e.errors.map((err) => err.message)
+            res.status(500).json({
+                    errors: ['Erro Inexperado: ' + error]
                 }
             )
         }

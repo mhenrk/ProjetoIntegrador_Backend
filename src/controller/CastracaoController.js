@@ -36,28 +36,28 @@ module.exports = {
     },
 
     async update(req, res) {
+        console.log(req.params.id)
         try {
             if (!req.params.id) {
-                res.status(404).json({
+                res.status(400).json({
                     errors: ['Id não enviado']
                 })
             }
 
-            const castracaoPk = await db.Castracao.findByPk(req.params.id)
+            const idCastracao = await db.Castracao.findByPk(req.params.id)
 
-            if (!castracaoPk) {
+            if (!idCastracao) {
                 return res.status(400).json({
-                    errors: ['Genero não encontrado']
+                    errors: ['Registro não encontrado']
                 })
             }
 
-            const castracaoUpdate = await Castracao.update(req.body)
+            const atualizaRegistro = await idCastracao.update(req.body)
 
-            return res.json(castracaoUpdate)
+            return res.json(atualizaRegistro)
         } catch (error) {
-            res.status(400).json(
-                {
-                    errors: e.errors.map((err) => err.message)
+            res.status(500).json({
+                errors: ['Foi encontrado um erro: ' + error]
                 }
             )
         }
@@ -75,16 +75,16 @@ module.exports = {
 
             if (!castracaoPk) {
                 return res.status(400).json({
-                    errors: ['Castração não cadastrado ou não encontrado']
+                    errors: ['Registro não encontrado']
                 })
             }
 
             await castracaoPk.destroy()
 
             return res.json(castracaoPk)
-        } catch (error) {
-            res.status(400).json({
-                    errors: e.errors.map((err) => err.message)
+        } catch (e) {
+            res.status(500).json({
+                    errors: ['Erro Inexperado']
                 }
             )
         }

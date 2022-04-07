@@ -42,15 +42,15 @@ module.exports = {
                 })
             }
 
-            const racaPk = await db.Raca.findByPk(req.params.id)
+            const idRaca = await db.Raca.findByPk(req.params.id)
 
-            if (!racaPk) {
+            if (!idRaca) {
                 return res.status(400).json({
-                    errors: ['Raça não encontrada']
+                    errors: ['Registro não encontrado']
                 })
             }
 
-            const racaUpdate = await racaPk.update(req.body)
+            const racaUpdate = await idRaca.update(req.body)
 
             return res.json(racaUpdate)
         } catch (error) {
@@ -70,21 +70,20 @@ module.exports = {
                 })
             }
 
-            const racaPk = await db.Raca.findByPk(req.params.id)
+            const idRaca = await db.Raca.findByPk(req.params.id)
 
-            if (!racaPk) {
+            if (!idRaca) {
                 return res.status(400).json({
-                    errors: ['Raça não cadastrada ou não encontrada']
+                    errors: ['Registro não encontrado']
                 })
             }
 
-            await racaPk.destroy()
+            await idRaca.destroy()
 
-            return res.json(racaPk)
+            return res.json(idRaca)
         } catch (error) {
-            res.status(400).json(
-                {
-                    errors: e.errors.map((err) => err.message)
+            res.status(500).json({
+                    errors: ['Erro Inexperado: ' + error]
                 }
             )
         }

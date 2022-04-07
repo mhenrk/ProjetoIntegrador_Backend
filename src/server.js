@@ -38,5 +38,5 @@ app.use('/petshop/foto/', fotoRoutes)
 app.use('/petshop/servicos/', servicosRoutes)
 
 app.listen(process.env.PORT, () => {
-    console.log(`Server Rodando em https://localhost:${process.env.PORT}`)
+    console.log(`Server Backend: https://localhost:${process.env.PORT}`)
 })

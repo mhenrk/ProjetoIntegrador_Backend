@@ -12,8 +12,8 @@ routes.get('/', cadUserController.index)     //CRUD APENAS
 routes.get('/:id', cadUserController.show)  //CRUD APENAS
 
 routes.post('/', cadUserController.store)
-routes.put('/', cadUserController.update)
-routes.delete('/', cadUserController.delete)
+routes.put('/', loginValidation.requestLogin, cadUserController.update)
+routes.delete('/', loginValidation.requestLogin, cadUserController.delete)
 
 /**
  * CRIAÇÃO DE USUÁRIO - FINALIZADO

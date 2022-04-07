@@ -50,15 +50,15 @@ module.exports = {
                 })
             }
 
-            const servicoPk = await db.Servico.findByPk(req.params.id)
+            const idServico = await db.Servico.findByPk(req.params.id)
 
-            if (!servicoPk) {
+            if (!idServico) {
                 return res.status(400).json({
-                    errors: ['Serviço não encontrado']
+                    errors: ['Registro não encontrado']
                 })
             }
 
-            const servicoUpdate = await servicoPk.update(req.body)
+            const servicoUpdate = await idServico.update(req.body)
 
             return res.json(servicoUpdate)
         } catch (error) {
@@ -78,21 +78,20 @@ module.exports = {
                 })
             }
 
-            const servicoPk = await db.Servico.findByPk(req.params.id)
+            const idServico = await db.Servico.findByPk(req.params.id)
 
-            if (!servicoPk) {
+            if (!idServico) {
                 return res.status(400).json({
-                    errors: ['Serviço não cadastrado ou não encontrado']
+                    errors: ['Registro não encontrado']
                 })
             }
 
-            await servicoPk.destroy()
+            await idServico.destroy()
 
-            return res.json(servicoPk)
+            return res.json(idServico)
         } catch (error) {
-            res.status(400).json(
-                {
-                    errors: e.errors.map((err) => err.message)
+            res.status(500).json({
+                    errors: ['Erro Inexperado: ' + error]
                 }
             )
         }

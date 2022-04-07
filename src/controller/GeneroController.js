@@ -51,7 +51,7 @@ module.exports = {
                 })
             }
 
-            const generoUpdate = await Genero.update(req.body)
+            const generoUpdate = await generoPk.update(req.body)
 
             return res.json(generoUpdate)
         } catch (error) {
@@ -71,20 +71,20 @@ module.exports = {
                 })
             }
 
-            const generoPk = await db.Genero.findByPk(req.params.id)
+            const idGenero = await db.Genero.findByPk(req.params.id)
 
-            if (!generoPk) {
+            if (!idGenero) {
                 return res.status(400).json({
-                    errors: ['Genero não cadastrado ou não encontrado']
+                    errors: ['Registro não encontrado']
                 })
             }
 
-            await generoPk.destroy()
+            await idGenero.destroy()
 
-            return res.json(generoPk)
+            return res.json(idGenero)
         } catch (error) {
-            res.status(400).json({
-                    errors: e.errors.map((err) => err.message)
+            res.status(500).json({
+                    errors: ['Erro Inexperado: ' + error]
                 }
             )
         }

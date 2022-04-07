@@ -44,15 +44,15 @@ module.exports = {
                 })
             }
 
-            const tipoPet = await db.Tipo.findByPk(req.params.id)
+            const idTipo = await db.Tipo.findByPk(req.params.id)
 
-            if (!tipoPet) {
+            if (!idTipo) {
                 return res.status(400).json({
-                    errors: ['Tipo não encontrado']
+                    errors: ['Registro não encontrado']
                 })
             }
 
-            const tipoUpdate = await tipoPet.update(req.body)
+            const tipoUpdate = await idTipo.update(req.body)
 
             return res.json(tipoUpdate)
         } catch (error) {
@@ -72,21 +72,20 @@ module.exports = {
                 })
             }
 
-            const tipoDelete = await db.Tipo.findByPk(req.params.id)
+            const idTipo = await db.Tipo.findByPk(req.params.id)
 
-            if (!tipoDelete) {
+            if (!idTipo) {
                 return res.status(400).json({
-                    errors: ['Tipo não cadastrado ou não encontrado']
+                    errors: ['Registro não encontrado']
                 })
             }
 
-            await tipoDelete.destroy()
+            await idTipo.destroy()
 
-            return res.json(tipoDelete)
+            return res.json(idTipo)
         } catch (error) {
-            res.status(400).json(
-                {
-                    errors: e.errors.map((err) => err.message)
+            res.status(500).json({
+                    errors: ['Erro Inexperado: ' + error]
                 }
             )
         }
