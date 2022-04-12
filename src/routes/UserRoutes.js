@@ -1,7 +1,7 @@
 const express = require('express')
 const routes = express.Router()
 
-const cadUserController = require('../controller/CadUserController')
+const cadUserController = require('../controller/UsuarioController')
 const loginValidation = require('../middleware/loginValidation')
 
 //###############################################################
