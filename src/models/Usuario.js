@@ -89,11 +89,6 @@ module.exports = (sequelize, DataTypes) => {
         }
     )
 
-    // //ultima alteração incluida
-    // Usuario.passwordValidado = (password) => {
-    //     return bcryptjs.compare(password, this.password)
-    // }
-
     Usuario.associate = (models) => {
         Usuario.hasMany(models.Pet, {
             as: 'pet',

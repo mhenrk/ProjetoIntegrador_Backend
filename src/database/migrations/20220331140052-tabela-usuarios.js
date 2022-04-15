@@ -15,7 +15,7 @@ module.exports = {
       },
       sobrenome:{
         type: Sequelize.STRING(40),
-        allowNull: false
+        allowNull: true
       },
       email:{
         type: Sequelize.STRING(100),
@@ -29,49 +29,45 @@ module.exports = {
       },
       cpf:{
         type: Sequelize.STRING(11),
-        allowNull: false,
+        allowNull: true,
         unique: true
       },
       datanasc:{
         type: Sequelize.STRING(10), //10/02/1995
-        allowNull: false
+        allowNull: true
       },
       password:{
         type: Sequelize.STRING,
         allowNull: false
       },
-      // password_hash:{
-      //   type: Sequelize.STRING,
-      //   allowNull: false
-      // },
       telefone:{
         type: Sequelize.STRING(11),
-        allowNull: false,
+        allowNull: true,
         unique: true
       },
       cep:{
         type: Sequelize.STRING(10), /*00000000*/
-        allowNull: false
+        allowNull: true
       },
       rua:{
         type: Sequelize.STRING(50),
-        allowNull: false
+        allowNull: true
       },
       numero:{
         type: Sequelize.STRING(5), /* 00000 - 99999*/
-        allowNull: false
+        allowNull: true
       },
       bairro:{
         type: Sequelize.STRING(30), /*10/10/1900*/
-        allowNull: false
+        allowNull: true
       },
       cidade:{
         type: Sequelize.STRING(30),
-        allowNull: false
+        allowNull: true
       },
       estado:{
         type: Sequelize.STRING(2), /*AC DF SP RJ*/
-        allowNull: false
+        allowNull: true
       },
       created_at: {
         type: Sequelize.DATE,
