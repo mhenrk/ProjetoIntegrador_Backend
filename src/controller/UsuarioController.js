@@ -18,15 +18,9 @@ module.exports = {
                 email,
                 password: passwordHash
             })
-            return res.status(200).json({ nome, email, password })
-    } catch(e) {
-        console.log(e)
-        return res.status(400).json(
-            {
-                errors: e.errors.map((err) => err.message)
-                //mapeando todo conjunto de erros que podem aparecer na aplicação
-            }
-        )
+            return res.status(200).json({ nome, email, passwordHash })
+    } catch(error) {
+        return res.status(400).json("Ocorreu um erro: " + error.message)
     }
 },
 
@@ -152,7 +146,6 @@ module.exports = {
         return res.status(200).json(showUser)
     } catch (error) {
         return res.status(404).json("Ocorreu um erro: " + error.message)
-
     }
 },
 
@@ -170,11 +163,7 @@ module.exports = {
 
         return res.json(updatedUser)
     } catch (error) {
-        res.status(400).json(
-            {
-                errors: e.errors.map((err) => err.message)
-            }
-        )
+        return res.status(404).json("Ocorreu um erro: " + error.message)
     }
 },
 
@@ -192,11 +181,7 @@ module.exports = {
 
         return res.json(userID)
     } catch (error) {
-        res.status(400).json(
-            {
-                errors: e.errors.map((err) => err.message)
-            }
-        )
+        return res.status(404).json("Ocorreu um erro: " + error.message)
     }
 }
 }

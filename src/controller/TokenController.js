@@ -16,6 +16,8 @@ module.exports = {
                 })
             }
 
+            //validar a consulta dos parceiros aqui
+
             const user = await db.Usuario.findOne({
                 where: { email }
             })

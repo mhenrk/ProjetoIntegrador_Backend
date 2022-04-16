@@ -64,7 +64,7 @@ module.exports = {
         } catch (error) {
             res.status(400).json(
                 {
-                    errors: e.errors.map((err) => err.message)
+                    errors: error.errors.map((err) => err.message)
                 }
             )
         }

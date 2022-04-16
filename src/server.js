@@ -12,6 +12,7 @@ const cadastraUserRoutes = require('./routes/UserRoutes')
 const tokenRoutes = require('../src/routes/tokenRoutes')
 const fotoRoutes = require('../src/routes/fotoRoutes')
 const servicosRoutes = require('../src/routes/servicosRoutes')
+const parceiroRoutes = require('../src/routes/Parceiros')
 
 // //chamando o arquivo index da base de dados
 
@@ -41,6 +42,7 @@ app.use('/petshop/cadastra-user/', cadastraUserRoutes)
 app.use('/petshop/token/', tokenRoutes)
 app.use('/petshop/foto/', fotoRoutes)
 app.use('/petshop/servicos/', servicosRoutes)
+app.use('/petshop/parceiros/', parceiroRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server Backend: http://localhost:${process.env.PORT}`)

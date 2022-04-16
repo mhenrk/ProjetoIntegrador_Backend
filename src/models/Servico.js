@@ -22,12 +22,12 @@ module.exports = (sequelize, DataTypes) => {
         }
     )
 
-    // Tipo.associate = (models) => {
-    //     Tipo.hasMany(models.Pet, {
-    //         as: 'pet',
-    //         foreignKey: 'tipo_pet_id'
-    //     })
-    // }
+    Servico.associate = (models) => {
+        Servico.belongsTo(models.Parceiro, {
+            as: 'parceiro',
+            foreignKey: 'parceiro_id'
+        })
+    }
     
     return Servico
 }

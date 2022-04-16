@@ -22,6 +22,14 @@ module.exports = {
         type: Sequelize.FLOAT,
         allowNull: false
       },
+      parceiro_id:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'parceiro',
+          key: 'id'
+        }
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false

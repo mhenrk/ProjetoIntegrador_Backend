@@ -1,3 +1,8 @@
 npm run dev
 npx sequelize-cli db:create
 npx sequelize-cli db:migrate
+npx sequelize-cli db:seed:all
+
+npx sequelize-cli migration:generate --name
+
+npx sequelize-cli seed:generate --name
