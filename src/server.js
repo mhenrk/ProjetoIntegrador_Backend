@@ -32,13 +32,13 @@ app.use(cors({
 }))
 
 //app.use('/', homeRoutes)
-app.use('/petshop/castracao-pet/', castracaoRoutes)
-app.use('/petshop/raca-pet/', racaPetRoutes)
-app.use('/petshop/tipo-pet/', tipoPetRoutes)
-app.use('/petshop/genero-pet/', generoPetRoutes)
-app.use('/petshop/peso-pet/', pesoPetRoutes)
-app.use('/petshop/cadastra-pet/', cadastraPetRoutes)
-app.use('/petshop/cadastra-user/', cadastraUserRoutes)
+app.use('/petshop/castracao/', castracaoRoutes) //ok
+app.use('/petshop/raca/', racaPetRoutes) //ok
+app.use('/petshop/tipo/', tipoPetRoutes) //ok
+app.use('/petshop/genero/', generoPetRoutes) //ok
+app.use('/petshop/peso/', pesoPetRoutes) //ok
+app.use('/petshop/pet/', cadastraPetRoutes)
+app.use('/petshop/usuario/', cadastraUserRoutes)
 app.use('/petshop/token/', tokenRoutes)
 app.use('/petshop/foto/', fotoRoutes)
 app.use('/petshop/servicos/', servicosRoutes)

@@ -7,8 +7,8 @@ const loginValidation = require('../middleware/loginValidation')
 //rotas para cadastramento, passando o controller que executa o cadastro
 routes.get('/', racaPetController.index)
 routes.get('/:id', racaPetController.show)
-routes.post('/', racaPetController.store)
-routes.put('/:id', racaPetController.update)
-routes.delete('/:id', racaPetController.delete)
+routes.post('/add', racaPetController.store)
+routes.put('/upd/:id', racaPetController.update)
+routes.delete('/del/:id', racaPetController.delete)
 
 module.exports = routes

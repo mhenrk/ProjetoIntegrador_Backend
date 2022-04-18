@@ -11,9 +11,9 @@ const loginValidation = require('../middleware/loginValidation')
 routes.get('/', cadUserController.index)     //CRUD APENAS
 routes.get('/:id', cadUserController.show)  //CRUD APENAS
 
-routes.post('/', cadUserController.store)
-routes.put('/', cadUserController.update)
-routes.delete('/', cadUserController.delete)
+routes.post('/add', cadUserController.store)
+routes.put('/upd', cadUserController.update)
+routes.delete('/del', cadUserController.delete)
 
 /**
  * CRIAÇÃO DE USUÁRIO - FINALIZADO

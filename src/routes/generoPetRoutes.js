@@ -7,8 +7,8 @@ const loginValidation = require('../middleware/loginValidation')
 //rotas para cadastramento, passando o controller que executa o cadastro
 routes.get('/', generoPetController.index)
 routes.get('/:id', generoPetController.show)
-routes.post('/', generoPetController.store)
-routes.put('/:id', generoPetController.update)
-routes.delete('/:id', generoPetController.delete)
+routes.post('/add', generoPetController.store)
+routes.put('/upd/:id', generoPetController.update)
+routes.delete('/del/:id', generoPetController.delete)
 
 module.exports = routes

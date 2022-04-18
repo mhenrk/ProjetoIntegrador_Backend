@@ -11,9 +11,9 @@ const loginValidation = require('../middleware/loginValidation')
 routes.get('/', parceiroController.index)     //CRUD APENAS
 routes.get('/:id', parceiroController.show)  //CRUD APENAS
 
-routes.post('/', parceiroController.store)
-routes.put('/:id', parceiroController.update)
-routes.delete('/:id', parceiroController.delete)
+routes.post('/add', parceiroController.store)
+routes.put('/upd/:id', parceiroController.update)
+routes.delete('/del/:id', parceiroController.delete)
 
 /**
  * CRIAÇÃO DE USUÁRIO - FINALIZADO
