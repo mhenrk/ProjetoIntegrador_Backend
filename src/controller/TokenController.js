@@ -19,8 +19,11 @@ module.exports = {
             //validar a consulta dos parceiros aqui
 
             const user = await db.Usuario.findOne({
-                where: { email }
+                where: { email },
+                raw: true
             })
+
+            const { id: user_id, email: user_email, nome, is_admin } = user
 
             //Não encontrou o usuario ou email digitado incorreto
             if (!user) {
@@ -55,7 +58,14 @@ module.exports = {
             })
 
             //retorno do objeto chave:valor com o token - momentaneo
-            return res.json({ token })
+            return res.status(200).send({
+                message: 'Usuário Logado',
+                id: user_id,
+                email: user_email,
+                nome,
+                is_admin,
+                token
+            })
         } catch (e) {
             return res.json("Ocorreu um erro: " + e.message)
         }

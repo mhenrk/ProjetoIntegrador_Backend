@@ -3,7 +3,7 @@ const db = require('../models')
 
 module.exports = {
 
-    async requestLogin (req, res, next) {
+    async requestLogin(req, res, next) {
         //apos ter feito login é gerado o token jwt
         //capturo o token passado no "headers"
         const { authorization } = req.headers
@@ -38,17 +38,17 @@ module.exports = {
             //pesquiso na base de dados se existe esse usuario com id/email
             const user = await db.Usuario.findOne({
                 where: {
-                  id,
-                  email,
-                },
-              });
+                    id,
+                    email
+                }
+            });
 
-              //se não tenho usuário já é feito o bloqueio
-              if (!user) {
+            //se não tenho usuário já é feito o bloqueio
+            if (!user) {
                 return res.status(401).json({
-                  errors: ['Usuário inválido'],
-                });
-              }
+                    errors: ['Usuário inválido'],
+                })
+            }
 
             req.id = id
             req.email = email
