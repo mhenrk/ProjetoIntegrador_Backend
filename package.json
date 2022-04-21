@@ -2,9 +2,8 @@
   "name": "dh-integrador",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/server.js"
   },
   "keywords": [],
@@ -12,11 +11,6 @@
   "contributors": [
     {
       "nome": "Victor",
-      "email": "nome@nome.com",
-      "portifolio": "htts://google.com"
-    },
-    {
-      "nome": "Guilherme",
       "email": "nome@nome.com",
       "portifolio": "htts://google.com"
     }
