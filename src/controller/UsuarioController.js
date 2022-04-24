@@ -191,6 +191,44 @@ module.exports = {
         } catch (error) {
             return res.status(404).json("Ocorreu um erro: " + error.message)
         }
+    },
+
+    async findUser(req, res) {
+
+        try {
+
+            const { email } = req.body
+
+            if(!email) res.status(404).send({message: 'campo obrigatorio'})
+
+            const user = await db.Usuario.findByPk({
+                where: { email },
+            })
+
+            if(!user) {
+                return res.status(404).send({
+                    error: ["usuario nao encontrado"]
+                })
+            }
+
+            const usuario = {
+                id: user.id,
+                nome: user.nome,
+                email: user.email
+            }
+
+            return res.status(200).send({
+                message: "usuario encontrado",
+                usuario
+            })
+
+        } catch (error) {
+            console.log(`Ocorreu um Erro: ${error}`)
+        }
+
+
     }
 }
+
+
 

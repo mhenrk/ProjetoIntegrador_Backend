@@ -15,6 +15,8 @@ routes.post('/add', cadUserController.store)
 routes.put('/upd', cadUserController.update)
 routes.delete('/del', cadUserController.delete)
 
+routes.post('/finduser', cadUserController.findUser)
+
 /**
  * CRIAÇÃO DE USUÁRIO - FINALIZADO
  * GERAÇÃO DO TOKEN E CONTROLE DE LOGIN - FINALIZADO
