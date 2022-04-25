@@ -22,15 +22,15 @@ module.exports = {
                 where: { email },
                 raw: true
             })
-
-            const { id: user_id, email: user_email, nome, is_admin } = user
-
-            //Não encontrou o usuario ou email digitado incorreto
-            if (!user) {
+            
+            if (!user || user == null) {
                 return res.status(401).json({
                     errors: ['Usuario não cadastrado']
                 })
             }
+            const { id: user_id, email: user_email, nome, is_admin } = user
+
+            //Não encontrou o usuario ou email digitado incorreto
 
             const validaPassword = bcrypt.compareSync(password, user.password)
 

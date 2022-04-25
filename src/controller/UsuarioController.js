@@ -201,11 +201,11 @@ module.exports = {
 
             if(!email) res.status(404).send({message: 'campo obrigatorio'})
 
-            const user = await db.Usuario.findByPk({
+            const user = await db.Usuario.findOne({
                 where: { email },
             })
 
-            if(!user) {
+            if(!user || user == null) {
                 return res.status(404).send({
                     error: ["usuario nao encontrado"]
                 })
