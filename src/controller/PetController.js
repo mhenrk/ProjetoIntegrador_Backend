@@ -36,7 +36,7 @@ module.exports = {
             console.log(e)
             res.status(400).json(
                 {
-                    errors: e.errors.map((err) => err.message)
+                    errors: e.message
                 }
             )
         }

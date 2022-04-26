@@ -12,7 +12,7 @@ routes.get('/', cadUserController.index)     //CRUD APENAS
 routes.get('/:id', cadUserController.show)  //CRUD APENAS
 
 routes.post('/add', cadUserController.store)
-routes.put('/upd', cadUserController.update)
+routes.put('/upd', loginValidation.requestLogin, cadUserController.update)
 routes.delete('/del', cadUserController.delete)
 
 routes.post('/finduser', cadUserController.findUser)

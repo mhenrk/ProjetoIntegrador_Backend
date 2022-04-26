@@ -97,7 +97,7 @@ module.exports = {
     //show
     async show(req, res) {
         try {
-            const showUser = await db.Usuario.findByPk(req.params.id, {
+            const showUser = await db.Usuario.findByPk(req.params.id,{
                 include: [
                     {
                         model: db.Pet,
@@ -145,11 +145,10 @@ module.exports = {
                     }
                 ],
                 attributes: {
-                    exclude: ['is_admin', 'cpf', 'password', 'cep', 'rua', 'numero', 'bairro', 'createdAt', 'updatedAt']
+                    exclude: ['is_admin', 'password', 'createdAt', 'updatedAt']
                 }
-            })
-
-            // const { id, nome, email, telefone } = showUser
+            }
+            )
 
             return res.status(200).json(showUser)
         } catch (error) {
@@ -166,11 +165,16 @@ module.exports = {
                     errors: ['Usuário não encontrado']
                 })
             }
+            console.log(req.body)
 
             const updatedUser = await userID.update(req.body)
 
+
             return res.json(updatedUser)
         } catch (error) {
+
+            console.log(error.message)
+            
             return res.status(404).json("Ocorreu um erro: " + error.message)
         }
     },
@@ -199,13 +203,13 @@ module.exports = {
 
             const { email } = req.body
 
-            if(!email) res.status(404).send({message: 'campo obrigatorio'})
+            if (!email) res.status(404).send({ message: 'campo obrigatorio' })
 
             const user = await db.Usuario.findOne({
                 where: { email },
             })
 
-            if(!user || user == null) {
+            if (!user || user == null) {
                 return res.status(404).send({
                     error: ["usuario nao encontrado"]
                 })
