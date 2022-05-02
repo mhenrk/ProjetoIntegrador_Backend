@@ -7,8 +7,8 @@ module.exports = {
     await queryInterface.bulkInsert('parceiro', 
     [
       {
-        nome_fantasia: 'TDZ Comercio Eletronico LTDA',
-        email: 'tdz@dhpetshop.com',  //unique
+        nome_fantasia: 'Azul Comercio Eletronico LTDA',
+        email: 'azul@dhpetshop.com',  //unique
         password: await bcryptojs.hash('123456789', 8),
         created_at: new Date(),
         updated_at: new Date()

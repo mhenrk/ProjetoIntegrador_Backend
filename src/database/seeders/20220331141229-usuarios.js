@@ -7,26 +7,19 @@ module.exports = {
     await queryInterface.bulkInsert('usuario', 
     [
       {
-        nome: 'Marcio',
-        email: 'a.h@dhpetshop.com',  //unique
+        nome: 'Usuario',
+        email: 'user@dhpetshop.com',
         password: await bcryptojs.hash('123456789', 8),
         created_at: new Date(),
         updated_at: new Date()
       },
-      {
-        nome: 'Victor',
-        email: 'victor.c@dhpetshop.com',  //unique
-        password: await bcryptojs.hash('123456789', 8),
-        created_at: new Date(),
-        updated_at: new Date()
-      },
-      {
-        nome: 'Guilherme',
-        email: 'guilherme.c@dhpetshop.com',  //unique
-        password: await bcryptojs.hash('123456789', 8),
-        created_at: new Date(),
-        updated_at: new Date()
-      }
+      // {
+      //   nome: 'Administrador',
+      //   email: 'admin@dhpetshop.com',
+      //   password: await bcryptojs.hash('123456789', 8),
+      //   created_at: new Date(),
+      //   updated_at: new Date()
+      // }
     ], {});
 
   },

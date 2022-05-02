@@ -42,7 +42,6 @@ module.exports = {
         }
     },
 
-    //Index
     async index(req, res) {
         try {
             const listarPets = await db.Pet.findAll({
@@ -94,7 +93,6 @@ module.exports = {
         }
     },
 
-    //show
     async show(req, res) {
         try {
             const showPet = await db.Pet.findByPk(req.params.id, {

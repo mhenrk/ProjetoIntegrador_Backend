@@ -14,17 +14,10 @@ const fotoRoutes = require('../src/routes/fotoRoutes')
 const servicosRoutes = require('../src/routes/servicosRoutes')
 const parceiroRoutes = require('../src/routes/Parceiros')
 
-// //chamando o arquivo index da base de dados
-
-//Chamando arquivo de configuração global
 require('dotenv').config()
 
-//rotas da aplicação - remover se estiver tudo ok
 app.use(express.json())
 
-//tratamento de requisições de formulários - body
-//realiza o tratamento de requisições passadas pelo body
-//isso evita que o body recebido por formulário venha undefined
 app.use(express.urlencoded({extended: true}))
 
 app.use(cors({

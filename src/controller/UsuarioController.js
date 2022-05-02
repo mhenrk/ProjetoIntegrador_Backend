@@ -12,7 +12,6 @@ module.exports = {
         const passwordHash = bcryptjs.hashSync(password, 8)
 
         try {
-            //faço teste para tentar criar um novo usuário, caso não consiga, ele me mostra o erro informado na chave message do objeto errors
             const cadUser = await db.Usuario.create({
                 nome,
                 email,
@@ -24,7 +23,6 @@ module.exports = {
         }
     },
 
-    //Index
     async index(req, res) {
         try {
             const usuarios = await db.Usuario.findAll({
@@ -94,7 +92,6 @@ module.exports = {
         }
     },
 
-    //show
     async show(req, res) {
         try {
             const showUser = await db.Usuario.findByPk(req.params.id,{

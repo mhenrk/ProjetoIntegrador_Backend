@@ -4,7 +4,6 @@ const routes = express.Router()
 const generoPetController = require('../controller/GeneroController')
 const loginValidation = require('../middleware/loginValidation')
 
-//rotas para cadastramento, passando o controller que executa o cadastro
 routes.get('/', generoPetController.index)
 routes.get('/:id', generoPetController.show)
 routes.post('/add', generoPetController.store)
