@@ -28,7 +28,7 @@ module.exports = {
         genero_pet_id: 2,    //unique
         pet_castrado_id: 1,
         peso_pet_id: 2,
-        usuario_id: 2,
+        usuario_id: 1,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -70,7 +70,7 @@ module.exports = {
         genero_pet_id: 1,    //unique
         pet_castrado_id: 2,
         peso_pet_id: 1,
-        usuario_id: 3,
+        usuario_id: 1,
         created_at: new Date(),
         updated_at: new Date()
       }

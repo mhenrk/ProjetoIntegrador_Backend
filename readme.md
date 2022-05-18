@@ -21,13 +21,13 @@ npx sequelize-cli db:migrate
 npx sequelize-cli db:seed:all
 ```
 
-Estes comandos irão: criar a base de dados, gerar as tabelas e popular o banco de dados
+Estes comandos irão: `criar a base de dados, gerar as tabelas e popular o banco de dados`
 
 Por fim inicialize o projeto atraves do comando npm run dev.
 Caso verifique no console: http:localhost:undefined, verifique no arquivo de ambiente (.env) a variavel PORT.
 
 ## Middleware
-Dentro da pasta middleware encontra-se o arquivo loginValidation, que é responsavel por autorizar o acesso a determinada rota se, somente se estiver autenticado (com token JWT gerado), usuários validados atraves deste middleware estarão aptos a criar os pets para somente seu propio usuário, evitando um usuário criar pet no login de outro.
+Dentro da pasta middleware encontra-se o arquivo `loginValidation`, que é responsavel por autorizar o acesso a determinada rota se, somente se estiver autenticado (com token JWT gerado), usuários validados atraves deste middleware estarão aptos a criar os pets para somente seu propio usuário, evitando um usuário criar pet no login de outro.
 
 ## Rotas
 O projeto possui as seguintes rotas:
