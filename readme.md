@@ -10,17 +10,23 @@ Este é um projeto de conclusão do curso de Desenvolvedor Fullstack NodeJs atra
 Para inicializar o projeto **UTILIZE DOCKER**
 
 Faça um clone do repositório utilizando `git clone`
-Renomeie o arquivo de ambiente `.env.example` para `.env` que se encontra na raiz do projeto que contem as váriaveis de ambiente utilizadas no projeto. Mas lembre-se: utilize-as **APENAS** para teste.
 
-O arquivo P `.env.example` já contem algumas chaves padronizadas
+Renomeie o arquivo de ambiente `.env.example` para `.env` que se encontra na raiz do projeto que contem as váriaveis de ambiente utilizadas no projeto.
+
+**Utilize os dados aqui fornecidos apenas para TESTE**
+
+O arquivo `.env.example` já contem algumas variaveis de ambiente com valores definidos
 
 **ATENÇÃO** com a variavel `DB_HOST` ela está diretamente associada ao nome do host no arquivo `docker-compose.yml`
 
 ## Inicialização do projeto
 Para iniciar o projeto, verifique se o docker está devidamente inicializado.
+
 Acesse a pasta do projeto e rode o comando `docker-compose up` 
 
-Aguarde a finalização. O projeto já está operacional
+Aguarde a finalização. 
+
+O projeto já poderá ser acessado e manipulado através do seu cliente de requisições rest
 
 ## Middleware
 Dentro da pasta middleware encontra-se o arquivo `loginValidation`, que é responsavel por autorizar o acesso a determinada rota se o usuário estiver autenticado (com token JWT gerado), usuários validados atraves deste middleware estarão aptos a criar os pets em seu perfil automaticamente
