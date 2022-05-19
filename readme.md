@@ -7,27 +7,23 @@ Este é um projeto de conclusão do curso de Desenvolvedor Fullstack NodeJs atra
 
 ## Requisitos de Instalação
 
-Para rodar o projeto é necessário rodar um banco MySQL
-Baixar o projeto atraves do git clone
-Realizar a instalação dos pacotes, através do comando `npm i (npm install)`
-Renomear o arquivo de ambiente `.env.example` para `.env` que se encontra na raiz do projeto que contem as váriaveis de ambiente utilizadas no projeto. Mas lembre-se: utilize-as **apenas** para teste.
+Para inicializar o projeto **UTILIZE DOCKER**
+
+Faça um clone do repositório utilizando `git clone`
+Renomeie o arquivo de ambiente `.env.example` para `.env` que se encontra na raiz do projeto que contem as váriaveis de ambiente utilizadas no projeto. Mas lembre-se: utilize-as **APENAS** para teste.
+
+O arquivo P `.env.example` já contem algumas chaves padronizadas
+
+**ATENÇÃO** com a variavel `DB_HOST` ela está diretamente associada ao nome do host no arquivo `docker-compose.yml`
 
 ## Inicialização do projeto
-Para inicialização da API, execute a seguinte os seguintes comandos abaixo, na ordem que são apresentados:
+Para iniciar o projeto, verifique se o docker está devidamente inicializado.
+Acesse a pasta do projeto e rode o comando `docker-compose up` 
 
-```
-npx sequelize-cli db:create
-npx sequelize-cli db:migrate
-npx sequelize-cli db:seed:all
-```
-
-Estes comandos irão: `criar a base de dados, gerar as tabelas e popular o banco de dados`
-
-Por fim inicialize o projeto atraves do comando npm run dev.
-Caso verifique no console: http:localhost:undefined, verifique no arquivo de ambiente (.env) a variavel PORT.
+Aguarde a finalização. O projeto já está operacional
 
 ## Middleware
-Dentro da pasta middleware encontra-se o arquivo `loginValidation`, que é responsavel por autorizar o acesso a determinada rota se, somente se estiver autenticado (com token JWT gerado), usuários validados atraves deste middleware estarão aptos a criar os pets para somente seu propio usuário, evitando um usuário criar pet no login de outro.
+Dentro da pasta middleware encontra-se o arquivo `loginValidation`, que é responsavel por autorizar o acesso a determinada rota se o usuário estiver autenticado (com token JWT gerado), usuários validados atraves deste middleware estarão aptos a criar os pets em seu perfil automaticamente
 
 ## Rotas
 O projeto possui as seguintes rotas:
