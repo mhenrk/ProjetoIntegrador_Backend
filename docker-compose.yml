@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysqldb
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    hostname: sqlsrv
+    env_file: .env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$DB_PASSWORD
+    healthcheck:
+      test: ['CMD', 'mysql', '-u$DB_USERNAME', '-p$DB_PASSWORD']
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    networks:
+      - backend
+  api:
+    build: .
+    depends_on:
+      mysql:
+        condition: service_healthy
+    container_name: backendapi
+    env_file: .env
+    environment:
+      - MYSQL_HOST=$DB_HOST
+      - MYSQL_USER=$DB_USERNAME
+      - MYSQL_PASSWORD=$DB_PASSWORD
+    ports:
+      - '3333:3333'
+    expose:
+      - 3333
+    command: npm run dev
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

@@ -12,7 +12,6 @@ module.exports = {
         return cb(null, true);
       },
     storage: multer.diskStorage({
-        //realiza o apontamento da pasta que será salvo os arquivos
         destination: (req, file, callback) => {
             callback(null, resolve(__dirname, '..', '..', 'uploads'))
         },

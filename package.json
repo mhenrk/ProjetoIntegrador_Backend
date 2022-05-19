@@ -2,10 +2,10 @@
   "name": "dh-integrador",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "devv": "npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all && nodemon src/server.js"
   },
   "keywords": [],
   "author": "Marcio H",
@@ -14,16 +14,12 @@
       "nome": "Victor",
       "email": "nome@nome.com",
       "portifolio": "htts://google.com"
-    },
-    {
-      "nome": "Guilherme",
-      "email": "nome@nome.com",
-      "portifolio": "htts://google.com"
     }
   ],
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",

@@ -8,6 +8,7 @@ module.exports = {
         nome: 'BANHO',
         tempo: '60',
         preco: 40.00,
+        parceiro_id: 1,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -15,6 +16,7 @@ module.exports = {
         nome: 'TOSA',
         tempo: '60',
         preco: 30.00,
+        parceiro_id: 3,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -22,6 +24,7 @@ module.exports = {
         nome: 'VACINAÇÃO',
         tempo: '60',
         preco: 20.00,
+        parceiro_id: 1,
         created_at: new Date(),
         updated_at: new Date()
       },
@@ -29,6 +32,7 @@ module.exports = {
         nome: 'DOGWALK',
         tempo: '60',
         preco: 30.00,
+        parceiro_id: 1,
         created_at: new Date(),
         updated_at: new Date()
       },

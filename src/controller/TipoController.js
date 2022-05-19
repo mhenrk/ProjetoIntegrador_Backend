@@ -29,7 +29,7 @@ module.exports = {
                     exclude: ['createdAt', 'updatedAt']
                 }
             })
-            return res.status(200).json(showTipo)
+            return res.status(200).json({showTipo})
         } catch (error) {
             console.log(error)
             return res.status(400).json(null)

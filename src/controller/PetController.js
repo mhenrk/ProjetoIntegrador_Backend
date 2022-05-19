@@ -12,7 +12,7 @@ module.exports = {
             genero_pet_id,
             pet_castrado_id,
             peso_pet_id,
-            usuario_id
+            usuario_id = req.id
         } = req.body
 
         try {
@@ -33,15 +33,15 @@ module.exports = {
             return res.json(cadPet)
 
         } catch (e) {
+            console.log(e)
             res.status(400).json(
                 {
-                    errors: e.errors.map((err) => err.message)
+                    errors: e.message
                 }
             )
         }
     },
 
-    //Index
     async index(req, res) {
         try {
             const listarPets = await db.Pet.findAll({
@@ -93,7 +93,6 @@ module.exports = {
         }
     },
 
-    //show
     async show(req, res) {
         try {
             const showPet = await db.Pet.findByPk(req.params.id, {

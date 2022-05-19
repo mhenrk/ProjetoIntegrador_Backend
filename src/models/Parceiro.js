@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Usuario = sequelize.define("Usuario",
+    const Parceiro = sequelize.define("Parceiro",
         {
             id: {
                 type: DataTypes.INTEGER,
@@ -8,20 +8,20 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true
             },
             nome: {
-                type: DataTypes.STRING(10),
-                defaultValue: '',
-                validate: {
-                    notEmpty: {
-                        msg: 'Campo Nome Obrigatorio'
-                    }
-                }
-            },
-            sobrenome: {
-                type: DataTypes.STRING(40),
+                type: DataTypes.STRING(50),
                 defaultValue: null,
                 validate: {
                     notEmpty: {
-                        msg: 'Campo Sobrenome Obrigatório'
+                        msg: 'Campo Nome Obrigatório'
+                    }
+                }
+            },
+            nome_fantasia: {
+                type: DataTypes.STRING(50),
+                defaultValue: '',
+                validate: {
+                    notEmpty: {
+                        msg: 'Campo Nome Fantasia Obrigatório'
                     }
                 }
             },
@@ -36,26 +36,13 @@ module.exports = (sequelize, DataTypes) => {
                         msg: 'Campo Email Obrigatório'
                     }
                 }
-            },
-            is_admin: {
-                type: DataTypes.BOOLEAN,
-                defaultValue: false
-            },
-            cpf: {
-                type: DataTypes.STRING(11),
+            },            
+            cnpj: {
+                type: DataTypes.STRING(14),
                 defaultValue: null,
                 validate: {
                     notEmpty: {
-                        msg: 'Campo CPF Obrigatório'
-                    }
-                }
-            },
-            datanasc: {
-                type: DataTypes.STRING(10),
-                defaultValue: null,
-                validate: {
-                    notEmpty: {
-                        msg: 'Campo Data Nascimento Obrigatório'
+                        msg: 'Campo CNPJ Obrigatório'
                     }
                 }
             },
@@ -85,21 +72,16 @@ module.exports = (sequelize, DataTypes) => {
             estado: DataTypes.STRING(2)
         },
         {
-            tableName: 'usuario',
+            tableName: 'parceiro',
         }
     )
 
-    Usuario.associate = (models) => {
-        Usuario.hasMany(models.Pet, {
-            as: 'pet',
-            foreignKey: 'usuario_id'
-        })
-
-        Usuario.hasMany(models.Foto, {
-            as: 'foto',
-            foreignKey: 'usuario_id'
+    Parceiro.associate = (models) => {
+        Parceiro.hasMany(models.Servico, {
+            as: 'servico',
+            foreignKey: 'parceiro_id'
         })
     }
 
-    return Usuario
+    return Parceiro
 }

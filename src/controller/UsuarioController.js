@@ -5,60 +5,39 @@ module.exports = {
     async store(req, res) {
         const {
             nome,
-            sobrenome,
             email,
-            cpf,
-            datanasc,
-            password,
-            telefone,
-            cep,
-            rua,
-            numero,
-            bairro,
-            cidade,
-            estado
+            password
         } = req.body
 
         const passwordHash = bcryptjs.hashSync(password, 8)
 
         try {
-            //faço teste para tentar criar um novo usuário, caso não consiga, ele me mostra o erro informado na chave message do objeto errors
             const cadUser = await db.Usuario.create({
                 nome,
-                sobrenome,
                 email,
-                cpf,
-                datanasc,
-                password: passwordHash,
-                telefone,
-                cep,
-                rua,
-                numero,
-                bairro,
-                cidade,
-                estado
+                password: passwordHash
             })
-            return res.status(200).json({ nome, sobrenome, email, telefone, password })
-        } catch (e) {
-            console.log(e)
-            return res.status(400).json(
-                {
-                    errors: e.errors.map((err) => err.message)
-                    //mapeando todo conjunto de erros que podem aparecer na aplicação
-                }
-            )
+            return res.status(200).json({ nome, email, passwordHash })
+        } catch (error) {
+            return res.status(400).json("Ocorreu um erro: " + error.message)
         }
     },
 
-    //Index
     async index(req, res) {
         try {
             const usuarios = await db.Usuario.findAll({
                 include: [
                     {
+                        model: db.Foto,
+                        as: 'foto',
+                        attributes: {
+                            exclude: ['usuario_id', 'createdAt', 'updatedAt']
+                        }
+                    },
+                    {
                         model: db.Pet,
                         as: 'pet',
-                        include : [
+                        include: [
                             {
                                 model: db.Tipo,
                                 as: 'tipo',
@@ -106,21 +85,21 @@ module.exports = {
             })
             return res.status(200).json(usuarios)
         } catch (error) {
+            console.log(error)
             return res.status(404).json({
                 errors: ['Usuários não encontrados']
             })
         }
     },
 
-    //show
     async show(req, res) {
         try {
-            const showUser = await db.Usuario.findByPk(req.params.id, {
+            const showUser = await db.Usuario.findByPk(req.params.id,{
                 include: [
                     {
                         model: db.Pet,
                         as: 'pet',
-                        include : [
+                        include: [
                             {
                                 model: db.Tipo,
                                 as: 'tipo',
@@ -163,16 +142,14 @@ module.exports = {
                     }
                 ],
                 attributes: {
-                    exclude: ['is_admin', 'cpf', 'password', 'cep', 'rua', 'numero', 'bairro', 'createdAt', 'updatedAt']
+                    exclude: ['is_admin', 'password', 'createdAt', 'updatedAt']
                 }
-            })
-
-            // const { id, nome, email, telefone } = showUser
+            }
+            )
 
             return res.status(200).json(showUser)
         } catch (error) {
             return res.status(404).json("Ocorreu um erro: " + error.message)
-
         }
     },
 
@@ -185,16 +162,17 @@ module.exports = {
                     errors: ['Usuário não encontrado']
                 })
             }
+            console.log(req.body)
 
             const updatedUser = await userID.update(req.body)
 
+
             return res.json(updatedUser)
         } catch (error) {
-            res.status(400).json(
-                {
-                    errors: e.errors.map((err) => err.message)
-                }
-            )
+
+            console.log(error.message)
+            
+            return res.status(404).json("Ocorreu um erro: " + error.message)
         }
     },
 
@@ -212,12 +190,46 @@ module.exports = {
 
             return res.json(userID)
         } catch (error) {
-            res.status(400).json(
-                {
-                    errors: e.errors.map((err) => err.message)
-                }
-            )
+            return res.status(404).json("Ocorreu um erro: " + error.message)
         }
+    },
+
+    async findUser(req, res) {
+
+        try {
+
+            const { email } = req.body
+
+            if (!email) res.status(404).send({ message: 'campo obrigatorio' })
+
+            const user = await db.Usuario.findOne({
+                where: { email },
+            })
+
+            if (!user || user == null) {
+                return res.status(404).send({
+                    error: ["usuario nao encontrado"]
+                })
+            }
+
+            const usuario = {
+                id: user.id,
+                nome: user.nome,
+                email: user.email
+            }
+
+            return res.status(200).send({
+                message: "usuario encontrado",
+                usuario
+            })
+
+        } catch (error) {
+            console.log(`Ocorreu um Erro: ${error}`)
+        }
+
+
     }
 }
+
+
 

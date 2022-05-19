@@ -2,7 +2,7 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    return await queryInterface.createTable('usuario', {
+    return await queryInterface.createTable('parceiro', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -10,31 +10,22 @@ module.exports = {
         allowNull: false
       },
       nome:{
-        type: Sequelize.STRING(10),
-        allowNull: false
-      },
-      sobrenome:{
-        type: Sequelize.STRING(40),
+        type: Sequelize.STRING(50),
         allowNull: true
+      },
+      nome_fantasia:{
+        type: Sequelize.STRING(50),
+        allowNull: false
       },
       email:{
         type: Sequelize.STRING(100),
         allowNull: false,
         unique: true
       },
-      is_admin:{
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: false
-      },
-      cpf:{
-        type: Sequelize.STRING(11),
+      cnpj:{
+        type: Sequelize.STRING(14),
         allowNull: true,
         unique: true
-      },
-      datanasc:{
-        type: Sequelize.STRING(10), //10/02/1995
-        allowNull: true
       },
       password:{
         type: Sequelize.STRING,
@@ -46,7 +37,7 @@ module.exports = {
         unique: true
       },
       cep:{
-        type: Sequelize.STRING(10), /*00000000*/
+        type: Sequelize.STRING(10),
         allowNull: true
       },
       rua:{
@@ -54,11 +45,11 @@ module.exports = {
         allowNull: true
       },
       numero:{
-        type: Sequelize.STRING(5), /* 00000 - 99999*/
+        type: Sequelize.STRING(5),
         allowNull: true
       },
       bairro:{
-        type: Sequelize.STRING(30), /*10/10/1900*/
+        type: Sequelize.STRING(30),
         allowNull: true
       },
       cidade:{
@@ -66,7 +57,7 @@ module.exports = {
         allowNull: true
       },
       estado:{
-        type: Sequelize.STRING(2), /*AC DF SP RJ*/
+        type: Sequelize.STRING(2),
         allowNull: true
       },
       created_at: {
@@ -80,6 +71,6 @@ module.exports = {
   });
 },
   async down (queryInterface, Sequelize) {
-    return await queryInterface.dropTable('usuario');
+    return await queryInterface.dropTable('parceiro');
   }
 };
